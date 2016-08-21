@@ -4,10 +4,10 @@
  * Register all actions and filters for the plugin
  *
  * @link       http://example.com
- * @since      1.0.0
+ * @since      0.1
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    wp-professionals
+ * @subpackage wp-professionals/includes
  */
 
 /**
@@ -17,8 +17,8 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    WP_Professionals
+ * @subpackage WP_Professionals/includes
  * @author     Your Name <email@example.com>
  */
 class WP_Professionals_Loader {

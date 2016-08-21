@@ -9,7 +9,7 @@
  *
  * @link              http://example.com
  * @since             1.0.0
- * @package           Plugin_Name
+ * @package           WP_Professionals
  *
  * @wordpress-plugin
  * Plugin Name:       WP Professionals
@@ -34,22 +34,22 @@ define('PLUGIN_DIR',plugin_dir_path( __FILE__ ));
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
  */
-function activate_plugin_name() {
+function activate_wp_professionals() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-activator.php';
-	Plugin_Name_Activator::activate();
+	WP_Professionals_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
-function deactivate_plugin_name() {
+function deactivate_wp_professionals() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+	WP_Professionals_Deactivator::deactivate();
 }
 
-//register_activation_hook( __FILE__, 'activate_plugin_name' );
-//register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+//register_activation_hook( __FILE__, 'activate_wp_professionals' );
+//register_deactivation_hook( __FILE__, 'deactivate_wp_professionals' );
 
 /**
  * The core plugin class that is used to define internationalization,
