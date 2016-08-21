@@ -14,13 +14,13 @@
  * @wordpress-plugin
  * Plugin Name:       WP Professionals
  * Plugin URI:        http://example.com/plugin-name-uri/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Creates functionality to store WordPress professionals skills and profile details..
  * Version:           1.0.0
- * Author:            Your Name or Your Company
+ * Author:            Sheeba Abraham
  * Author URI:        http://example.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-name
+ * Text Domain:       wp_professionals
  * Domain Path:       /languages
  */
 
@@ -68,8 +68,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-professionals.php';
  */
 function run_wp_professionals() {
 
-	$plugin = new WP_Pofessionals();
+	$plugin = new WP_Professionals();
 	$plugin->run();
-
 }
 run_wp_professionals();

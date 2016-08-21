@@ -27,7 +27,7 @@
  * @subpackage Plugin_Name/includes
  * @author     Your Name <email@example.com>
  */
-class WP_Pofessionals {
+class WP_Professionals {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -123,6 +123,8 @@ class WP_Pofessionals {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-plugin-name-public.php';
 
 		$this->loader = new WP_Professionals_Loader();
+
+
 
 	}
 

@@ -49,12 +49,14 @@ class WP_Professionals_Loader {
 	 */
 	public function __construct() {
 
-		//Return if either the taxonomy Skill or memebers don't exist
-		if (!(taxonomy_exists('skill')) || !(taxonomy_exists('members')) ) {
+		//Return if either the taxonomy Skill or member don't exist
+		if (!(taxonomy_exists('skill')) || !(taxonomy_exists('member')) ) {
 			return false;
 		}
+
 		$this->actions = array();
 		$this->filters = array();
+
 
 	}
 
@@ -129,47 +131,32 @@ class WP_Professionals_Loader {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
 */
-
-
-		add_action('wp', array( $this,'load'));
-
-	}
-
-	public function load() {
-		add_action('template_redirect', array( $this,'load_templates'));
-	}
-
-	public function load_templates() {
-		if (is_tax(array('skill','members'))) {
-			add_filter("template_include",array( $this,'locate_template'));
-		}
+		//Add hook to load taxonmony template from plugin folder
+		add_filter( 'template_include', array($this,'load_template' ));
 	}
 
 
 
-	public function locate_template($template_names, $load = false, $require_once = true ) {
-		global $wp_query;
-		$term =	$wp_query->queried_object;
-
-		$located = '';
-
-		$template_name="taxonomy-".$term->taxonomy.".php";
 
 
-		if ( file_exists(STYLESHEETPATH . '/' . $template_name)) {
-			$located = STYLESHEETPATH . '/' . $template_name;
+/**
+ * Callback function fired on template-include hook to locate template for our taxonomy
+ *
+ * @param string|array $template_names Template file(s) to search for, in order.
+effect if $load is false.
+ * @return string The template filename if one is located.
+ */
+public function load_template( $original_template ) {
+	global $wp_query;
+	$term =	$wp_query->queried_object;
+	$template_name="taxonomy-".$term->taxonomy.".php";
 
-		} elseif ( file_exists(TEMPLATEPATH . '/' . $template_name) ) {
-			$located = TEMPLATEPATH . '/' . $template_name;
-		}  elseif ( file_exists( PLUGIN_DIR  . '/templates/'  . $template_name ) ) {
-			$located = PLUGIN_DIR  . '/templates/' . $template_name;
-
-		}
-
-
-		if ( $load && '' != $located )
-			load_template( $located, $require_once );
-
-		return $located;
+	//Include template only if skill or member
+	if ( is_tax(array('skill','member')))  {
+		return PLUGIN_DIR  . '/templates/' . $template_name;
+	} else {
+		return $original_template;
 	}
+}
+
 }
